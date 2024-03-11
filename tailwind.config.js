@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        sm: "320px",
+        // sm: "320px",
         mm: "375px",
         ml: "425px",
         md: "768px",
@@ -14,8 +14,7 @@ module.exports = {
         "2xl": "2560px",
       },
       colors: {
-        accent: "var(--accent-color)",
-        accentLow: "var(--accent-low-op)",
+        primary: "var(--primary-color)",
       },
     },
   },

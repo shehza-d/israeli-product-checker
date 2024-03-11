@@ -1,15 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Quiz from "../pages/Quiz";
-import Welcome from "../pages/Welcome";
-import Result from "../pages/Result";
+import Main from "../pages/Main";
 
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/welcome" element={<Welcome />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="/result" element={<Result />} />
-      <Route path="*" element={<Navigate to="/welcome" replace={true} />} />
+      <Route path="/" element={<Main />} />
+      <Route path="*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );
 }
