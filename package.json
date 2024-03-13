@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "surge ./build --domain israeli-product-checker-ims.surge.sh",
+    "format": "npx prettier --write .",
     "done": "npm run build && npm run deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

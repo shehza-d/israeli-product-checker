@@ -13,3 +13,12 @@
 :root {
   --primary-color: #47a226;
 }
+
+.S_Underline {
+  @apply after:absolute after:-bottom-[1px] after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-500 after:content-[''];
+}
+.shadow-inset {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 10px 0px 5px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}

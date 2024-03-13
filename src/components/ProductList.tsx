@@ -1,77 +1,41 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
+import { products } from "../data";
 
-const products = [
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
-  },
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-  {
-    name: "Pepsi",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-  {
-    name: "Jane Cooper",
-    detail: "Regional Paradigm Technician",
-    imageUrl:
-      "https://seeklogo.com/images/P/pepsi-logo-1CC1DE9113-seeklogo.com.png",
-  },
-];
 export default function ProductList() {
   const [searchQuery, setSearchQuery] = useState("");
-  console.log("🚀 ~ ProductList ~ searchQuery:", searchQuery)
-  const [data, setData] = useState([]);
 
-  const searchFun = () => {
-    return products.filter(
+  const searchFun = () =>
+    products.filter(
       (item) =>
         item.name.toLowerCase().includes(searchQuery) ||
-        item.detail.toLowerCase().includes(searchQuery),
+        item?.detail?.toLowerCase()?.includes(searchQuery) ||
+        item.alternative.name.toLowerCase().includes(searchQuery) ||
+        item?.alternative?.detail?.toLowerCase()?.includes(searchQuery),
     );
-  };
+
   return (
-    <section className="bg-gray-100">
-      <div className="flex w-full justify-center">
+    <section className="shadow-inset mb-8 rounded-xl bg-gray-100 p-3 md:p-4">
+      <div className="my-6 flex w-full justify-center">
         <input
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value?.toLowerCase())}
           autoComplete="search"
-          className="w-[80%] rounded-md border-0 bg-white px-3.5 py-2 text-slate-700 shadow-lg outline-none ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+          className="w-[80%] rounded-md border-0 bg-white px-3.5 py-2 text-slate-700 shadow-lg outline-none ring-1 ring-inset ring-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
           type="search"
+          placeholder="Search product"
           name="search"
         />
       </div>
       <div>
-        <ul className="grid grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 gap-6">
           {searchFun()?.map((product, i) => (
-            <ProductCard productDetail={product} key={i} />
+            <div className="flex gap-3 md:gap-6" key={i}>
+              <ProductCard productDetail={product} />
+              <ProductCard
+                productDetail={product.alternative}
+                alternative={true}
+              />
+            </div>
           ))}
         </ul>
       </div>

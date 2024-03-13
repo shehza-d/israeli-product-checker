@@ -1,16 +1,9 @@
-export type IDifficulty = "easy" | "medium" | "hard";
-
-export interface IQuestion {
-  category: string;
-  type: "multiple" | "boolean";
-  difficulty: IDifficulty;
-  question: string;
-  correct_answer: string;
-  incorrect_answers: string[];
-  choices?: string[];
+export interface IProduct {
+  name: string;
+  detail?: string;
+  imageUrl?: string;
 }
 
-export interface IScore {
-  questionNo: number;
-  answeredCorrectly: boolean;
+export interface IListOfProducts extends IProduct {
+  alternative: IProduct;
 }
