@@ -32,8 +32,11 @@ export default function ProductCard({ productDetail, alternative }: IProps) {
         </p>
       </div>
       <img
-        className="-order-1 h-10 w-10 flex-shrink-0 rounded-full bg-slate-300 md:order-1"
-        src={productDetail?.imageUrl}
+        className="-order-1 h-10 w-10 flex-shrink-0 rounded-full bg-slate-300 shadow-md md:order-1"
+        src={
+          productDetail?.imageUrl ||
+          "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg"
+        }
         alt="product-logo"
       />
     </li>

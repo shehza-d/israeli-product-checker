@@ -10,6 +10,7 @@ export default function ProductList() {
       (item) =>
         item.name.toLowerCase().includes(searchQuery) ||
         item?.detail?.toLowerCase()?.includes(searchQuery) ||
+        item?.search_terms?.toLowerCase()?.includes(searchQuery) ||
         item.alternative.name.toLowerCase().includes(searchQuery) ||
         item?.alternative?.detail?.toLowerCase()?.includes(searchQuery),
     );
